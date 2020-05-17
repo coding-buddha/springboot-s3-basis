@@ -1,0 +1,24 @@
+spring:
+  profiles:
+    include: override
+    active: dev
+
+---
+spring:
+  profiles: dev
+
+server:
+  port: 8080
+
+cloud:
+  aws:
+    credentials:
+      access-key: '{AWS 계정에 부여된 access-key 값 입력}'
+      secret-key: '{AWS 계정에 부여된 secret-key 값 입력}'
+    s3:
+      bucket: '{S3 서비스에서 생성한 버킷의 이름을 설정}'
+    region:
+      static: '{S3 를 서비스할 리전의 명을 설정}'
+    # spring cloud 실행 시, 서버 구성을 자동화하는 CloudFormation 이 자동으로 실행되는데 이를 사용하지 않음
+    stack:
+      auto: false
